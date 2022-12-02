@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "seek-8e88c": {
+      "hosting": {
+        "seek": [
+          "seek-8e88c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "seek-8e88c"
+  }
+}
