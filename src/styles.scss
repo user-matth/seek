@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 3em!important;
+}
+
+h2 {
+    font-size: 2em!important;
+}
+
+p {
+    font-size: 13px!important;
+}
+
+.grotesk{
+    font-family: 'Space Grotesk', sans-serif;
+}

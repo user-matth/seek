@@ -11,7 +11,7 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    CoreModule
+    CoreModule,
   ],
   declarations: [
     HomeComponent
