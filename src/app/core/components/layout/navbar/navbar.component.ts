@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  active: boolean = false
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -23,6 +25,10 @@ export class NavbarComponent implements OnInit {
 
   navigate(url: string){
     this.router.navigateByUrl(url)
+  }
+
+  activateMenu(){
+    this.active = !this.active
   }
 
 }
