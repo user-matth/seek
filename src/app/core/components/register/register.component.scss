@@ -1,0 +1,63 @@
+$heading: 35px!important;
+$sub-heading: 25px!important;
+$mobile-font: 11pt;
+
+@media only screen and (max-width: 1024px) {
+    .col-7{
+        width: 100%;
+        padding: 0%!important;
+    }
+    .col-5{
+        z-index: 22;
+        position: absolute;
+        background: #FFFF;
+        border-radius: 20px;
+        width: 450px;
+    }
+    .row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding-top: 1rem!important;
+        margin: 0!important;
+    }
+    .form-signin{
+        height: auto !important;
+        padding-top: 3rem;
+    }
+    .heroHero{
+        width: 100%!important;
+    }
+    h1{
+        font-size: $heading;
+    }
+    .h3{
+        font-size: $sub-heading;
+    }
+    label {
+        font-size: $mobile-font;
+    }
+    .ps-0{
+        padding-left: calc(var(--bs-gutter-x) * .5)!important;
+    }
+    .form-control{
+        padding: 12px!important;
+    }
+    .btn{
+        padding: 9px;
+        font-size: 12pt;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .col-5{
+        z-index: 22;
+        position: absolute;
+        background: #FFFF;
+        border-radius: 20px;
+        width: 80%;
+        padding: 0 25px!important;
+        height: 90%;
+    }
+}

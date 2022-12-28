@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   created_at: string = ''
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -49,5 +51,4 @@ export class HomeComponent implements OnInit {
       this.taskService.delete(task)
     }
   }
-
 }

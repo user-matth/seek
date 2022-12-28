@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="mb-5">
+
+      <h1 class="grotesk">Making Exam</h1>
+
+      <label for="exampleFormControlInput1" class="form-label mt-3">Title</label>
+      <input class="form-control" type="text" placeholder="Title" [(ngModel)]="title" name="title">
+
+      <div class="mt-3">
+        <label for="exampleFormControlInput1" class="form-label mt-3">Brief Description</label>
+        <textarea class="form-control" rows="3" placeholder="Description" [(ngModel)]="description" name="description"></textarea>
+      </div>
+
+      <label for="exampleFormControlInput1" class="form-label mt-3">Subject</label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="subject" name="subject">
+        <option *ngFor="let option of subjectOpt" [ngValue]="option.text">{{option.text}}</option>
+      </select>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <label for="exampleFormControlInput1" class="form-label mt-3">Question</label>
+          <textarea class="form-control" rows="4" placeholder="Question" [(ngModel)]="question" name="question"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label for="exampleFormControlInput1" class="form-label mt-3">Options - Answer</label>
+        <div class="d-flex flex-column">
+          <div class="form-check ps-0 pe-3 mb-2 d-flex">
+            <label class="form-check-label me-3 d-flex align-items-center" for="a"> A </label>
+            <input class="form-control" type="text" [(ngModel)]="answer_a">
+          </div>
+          <div class="form-check ps-0 pe-3 mb-2 d-flex">
+            <label class="form-check-label me-3 d-flex align-items-center" for="b"> B </label>
+            <input class="form-control" type="text" [(ngModel)]="answer_b">
+          </div>
+          <div class="form-check ps-0 pe-3 mb-2 d-flex">
+            <label class="form-check-label me-3 d-flex align-items-center" for="c"> C </label>
+            <input class="form-control" type="text" [(ngModel)]="answer_c">
+          </div>
+          <div class="form-check ps-0 pe-3 mb-2 d-flex">
+            <label class="form-check-label me-3 d-flex align-items-center" for="d"> D </label>
+            <input class="form-control" type="text" [(ngModel)]="answer_d">
+          </div>
+          <div class="form-check ps-0 pe-3 mb-2 d-flex">
+            <label class="form-check-label me-3 d-flex align-items-center" for="e"> E </label>
+            <input class="form-control" type="text" [(ngModel)]="answer_e">
+          </div>
+        </div>
+      </div>
+
+      <label for="exampleFormControlInput1" class="form-label mt-3">Correct Answer</label>
+          <div class="d-flex">
+            <div class="form-check me-5">
+              <input class="form-check-input" type="radio" name="correct_answer" [(ngModel)]="correct_answer" value="a">
+              <label class="form-check-label" for="a"> A </label>
+            </div>
+            <div class="form-check me-5">
+              <input class="form-check-input" type="radio" name="correct_answer" [(ngModel)]="correct_answer" value="b">
+              <label class="form-check-label" for="b"> B </label>
+            </div>
+            <div class="form-check me-5">
+              <input class="form-check-input" type="radio" name="correct_answer" [(ngModel)]="correct_answer" value="c">
+              <label class="form-check-label" for="c"> C </label>
+            </div>
+            <div class="form-check me-5">
+              <input class="form-check-input" type="radio" name="correct_answer" [(ngModel)]="correct_answer" value="d">
+              <label class="form-check-label" for="d"> D </label>
+            </div>
+            <div class="form-check me-5">
+              <input class="form-check-input" type="radio" name="correct_answer" [(ngModel)]="correct_answer" value="e">
+              <label class="form-check-label" for="e"> E </label>
+            </div>
+          </div>
+      
+      <div class="text-end mt-4">
+        <button type="button" onclick="history.back()" class="btn btn-outline-dark rounded-0 ps-3 pe-3 me-3"> <i class="bi bi-chevron-left"></i> Back</button>
+        <button type="button" (click)="submit()" class="btn btn-dark rounded-0 ps-5 pe-5">Create</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>
+
+<div class="position-fixed end-0 p-3" style="z-index: 999999; top: 42px;">
+  <div id="liveToast" [ngClass]=" status ? 'fade show' : 'fade hide'" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Seek</strong>
+      <small>agora</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Preencha todas as informações para prosseguir.
+    </div>
+  </div>
+</div>

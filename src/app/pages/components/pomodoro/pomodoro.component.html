@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="wrapper">
+    
+    <div class="circular-progress">
+      <div class="d-flex flex-column align-items-center justify-content-center timer-value">
+        <div class="d-flex flex-row mt-3 justify-content-between w-100">
+          <button (click)="decreaseMinutes()" class="btn btn-light btn-sm"><i class="bi bi-dash"></i></button>
+          <h1>{{ minutes }}:{{ seconds === 0 ? '00' : seconds }}</h1>
+          <button (click)="increaseMinutes()" class="btn btn-light btn-sm"><i class="bi bi-plus"></i></button>
+        </div>
+        <div class="d-flex mt-3">
+          <button (click)="startTimer()" class="btn btn-dark me-2">Start Timer</button>
+          <button (click)="stopTimer()" class="btn btn-outline-dark">Stop Timer</button>
+        </div>
+        <div class="d-flex flex-column mt-3 w-100">
+          <button (click)="restartTimer()" class="btn btn-outline-dark w-100">re-start</button>
+        </div>
+      </div>
+    </div>
+    <div class="valueContainer"></div>
+  </div>
+</div>
+<app-footer></app-footer>

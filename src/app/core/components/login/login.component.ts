@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   email: string = ''
   password: string = ''
 
+  status: boolean = false
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -25,12 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(){
-    if(this.email == ''){
-      alert('Please enter email')
-      return
-    }
-    if(this.password == ''){
-      alert('Please enter password')
+    if(this.email == '' || this.password == ''){
+      this.status = true
       return
     }
     this.auth.login(this.email, this.password)

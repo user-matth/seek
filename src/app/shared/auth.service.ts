@@ -24,18 +24,18 @@ export class AuthService {
         this.router.navigate(['/confirm-email'])
       }
     }, err => {
-      alert('Something went wrong')
+      console.log('Something went wrong')
       this.router.navigate(['/login'])
     })
   }
 
   register(email: string, password: string){
     this.fireAuth.createUserWithEmailAndPassword(email, password).then( res => {
-      alert('Registration Successful')
+      console.log('Registration Successful')
       this.router.navigate(['/login'])
       this.sendEmailForVerification(res.user)
     }, err => {
-      alert(err.message)
+      console.log(err.message)
       this.router.navigate(['/register'])
     })
   }
@@ -45,7 +45,7 @@ export class AuthService {
       localStorage.removeItem('token')
       this.router.navigate(['/login'])
     }, err => {
-      alert(err.message )
+      console.log(err.message )
     })
   }
 
@@ -53,7 +53,7 @@ export class AuthService {
     this.fireAuth.sendPasswordResetEmail(email).then( () => {
       this.router.navigate(['/confirm-email'])
     }, err => {
-      alert('Something went wrong...')
+      console.log('Something went wrong...')
     })
   }
 
@@ -61,7 +61,7 @@ export class AuthService {
     user.sendEmailForVerification().then( (res:any) => {
       this.router.navigate(['/confirm-email'])
     }, (err: any) => {
-      alert('Something went wrong. Not able to send mail to your email.')
+      console.log('Something went wrong. Not able to send mail to your email.')
     })
   }
 
@@ -70,7 +70,7 @@ export class AuthService {
       this.router.navigate(['home'])
       localStorage.setItem('token', JSON.stringify(res.user?.uid))
     }, err => {
-      alert(err.message)
+      console.log(err.message)
     })
   }
 

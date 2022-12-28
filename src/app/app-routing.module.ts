@@ -5,6 +5,8 @@ import { ForgotPasswordComponent } from './core/components/auth/forgot-password/
 import { LoginComponent } from './core/components/login/login.component';
 import { RegisterComponent } from './core/components/register/register.component';
 import { HomeComponent } from './pages/components/home/home.component';
+import { PomodoroComponent } from './pages/components/pomodoro/pomodoro.component';
+import { StudentControlModule } from './pages/components/student-control/student-control.module';
 
 const routes: Routes = [
   { path: '' , redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +15,9 @@ const routes: Routes = [
   { path: 'forgot-password' , component: ForgotPasswordComponent },
   { path: 'confirm-email' , component: ConfirmEmailComponent },
   { path: 'home' , component: HomeComponent },
+  { path: 'pomodoro' , component: PomodoroComponent },
+  { path: 'student-manager', loadChildren: () => import('./pages/components/student-control/student-control.module').then(m => m.StudentControlModule) },
+  { path: 'exam', loadChildren: () => import('./pages/components/exam/exam.module').then(m => m.ExamModule) },
 ];
 
 @NgModule({

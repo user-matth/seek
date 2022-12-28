@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-7 pe-0">
-    <img src="https://images.unsplash.com/photo-1541870730196-cd1efcbf5649?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80" alt="" style="object-fit: cover; width: 100%; overflow: hidden; height: 100vh;">
+<div class="row p-3 pb-0 pt-0">
+  <div class="col-7 d-flex align-items-center justify-content-center">
+    <img src="https://images.unsplash.com/photo-1593768409671-0d68c6255a48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt=""class="" style="object-fit: cover; width: 99%; overflow: hidden; height: 95vh; border-radius: 15px">
   </div>
-  <div class="col-5 ps-0">
+  <div class="col-5">
     <main class="form-signin m-auto text-center grotesk" style="max-width: 400px; height: 100vh; display: flex; align-items: center; justify-content: center; align-content: center;">
       <form>
-        <h1 class="mb-5 fw-normal grotesk">Feel free</h1>
-        <h1 class="h3 fs-5 mb-5 fw-normal grotesk">You're at home, join us to a coffee</h1>
+        <h1 class="mb-5 fw-normal grotesk">Welcome to Seek</h1>
+        <h1 class="h3 fs-5 mb-5 fw-normal grotesk">Register your account</h1>
     
         <div class="d-flex flex-column align-items-start mb-3">
           <label for="floatingInput grotesk">Email</label>
@@ -16,21 +16,8 @@
           <label for="floatingPassword grotesk">Password</label>
           <input type="password" class="form-control grotesk w-100 pt-3 pb-3 ps-4 pe-2" id="floatingPassword" name="password" [(ngModel)]="password" style="border-radius: 0;">
         </div>
-    
-        <div class="d-flex justify-content-between mb-4 mt-4">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" class="rounded-0" value="remember-me"> Remember me
-            </label>
-          </div>
-          <div class="checkbox">
-            <label class="fw-bold">
-              <a class="text-dark" style="cursor: pointer; text-decoration: none;">Forgot password</a>
-            </label>
-          </div>
-        </div>
             
-        <button class="w-100 btn btn-lg btn-dark mb-3" type="button" (click)="register()" style="border-radius: 0;">Signin</button>
+        <button class="w-100 btn btn-lg btn-dark mt-4 mb-3" type="button" (click)="register()" style="border-radius: 0;">Signin</button>
 
         <button class="w-100 btn btn-lg btn-outline-dark mb-5" type="button" (click)="signInWithGoogle()" style="border-radius: 0;"> 
           <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 10px 3px 0;" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
@@ -41,7 +28,7 @@
 
         <div class="checkbox mb-5">
           <label>
-            Already have an account? <a class="text-primary" style="cursor: pointer; text-decoration: none;" (click)="navigate('/')">Login.</a>
+            Already have an account? <a class="fw-bold text-dark" style="cursor: pointer; text-decoration: none;" (click)="navigate('/')">Login.</a>
           </label>
         </div>
 

@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+$text-secondary                  : #a7a7a7 !important;
+$normal-font                     : 12pt;
+$dark                            : #1A1A1A;
+$gray-800                        : #6e6e6e;
+$rose                            : #DB6D91;
+$color-announcement-banner-accent: #8f8f8f;
+
 * {
     font-family: 'Inter', sans-serif;
 }
@@ -10,17 +17,328 @@ body {
 }
 
 h1 {
-    font-size: 3em!important;
+    font-size: 3em !important;
 }
 
 h2 {
-    font-size: 2em!important;
+    font-size: 2em !important;
+}
+
+.grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.wrapper {
+    margin-top: 125px;
+    min-height: 40vh;
+}
+
+.text-elipsis {
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    max-width    : 85%;
+}
+
+.delete-btn {
+    z-index : 11;
+    position: absolute;
+    top     : 37px;
+    right   : 37px;
+}
+
+.card:hover {
+    transform         : scale(1.02);
+    transition        : ease-in-out .3s;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.card {
+    transition: ease-in-out .3s;
+}
+
+.card-no-hover{
+    transition: none;
+}
+.card-no-hover:hover{
+    transition: none;
+    transform         : scale(1);
+    -webkit-box-shadow: none;
+    -moz-box-shadow   : none;
+    box-shadow        : none;
+}
+
+.home-hero>img {
+    width     : 100%;
+    margin-top: -120px;
+}
+
+.home-hero {
+    height  : 500px;
+    overflow: hidden;
+}
+
+.home-z-index {
+    position: absolute;
+    z-index : 3;
+    top     : 40%;
+}
+
+.Iam {
+    color: #999;
+}
+
+.Iam p {
+    float    : left;
+    font-size: 30pt !important;
+    height   : 51px;
+    padding  : 36px 10px;
+}
+
+.Iam b {
+    float   : left;
+    overflow: hidden;
+    position: relative;
+    height  : 50px;
+    top     : 40px;
+}
+
+.Iam .innerIam {
+    display    : inline-block;
+    color      : #3c3c3c;
+    position   : relative;
+    white-space: nowrap;
+    top        : 0;
+    left       : 0;
+    font-size  : 30pt !important;
+    line-height: 50px;
+
+    /*animation*/
+    -webkit-animation                : move 5s;
+    -moz-animation                   : move 5s;
+    -ms-animation                    : move 5s;
+    -o-animation                     : move 5s;
+    animation                        : move 5s;
+    /*animation-iteration-count*/
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count   : infinite;
+    -ms-animation-iteration-count    : infinite;
+    -o-animation-iteration-count     : infinite;
+    animation-iteration-count        : infinite;
+    /*animation-delay*/
+    -webkit-animation-delay          : 1s;
+    -moz-animation-delay             : 1s;
+    -ms-animation-delay              : 1s;
+    -o-animation-delay               : 1s;
+    animation-delay                  : 1s;
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+    }
+
+    20% {
+        top: -50px;
+    }
+
+    40% {
+        top: -100px;
+    }
+
+    60% {
+        top: -150px;
+    }
+
+    80% {
+        top: -200px;
+    }
+}
+
+@-webkit-keyframes move {
+    0% {
+        top: 0px;
+    }
+
+    20% {
+        top: -50px;
+    }
+
+    40% {
+        top: -100px;
+    }
+
+    60% {
+        top: -150px;
+    }
+
+    80% {
+        top: -200px;
+    }
+}
+
+@-moz-keyframes move {
+    0% {
+        top: 0px;
+    }
+
+    20% {
+        top: -50px;
+    }
+
+    40% {
+        top: -100px;
+    }
+
+    60% {
+        top: -150px;
+    }
+
+    80% {
+        top: -200px;
+    }
+}
+
+@-o-keyframes move {
+    0% {
+        top: 0px;
+    }
+
+    20% {
+        top: -50px;
+    }
+
+    40% {
+        top: -100px;
+    }
+
+    60% {
+        top: -150px;
+    }
+
+    80% {
+        top: -200px;
+    }
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+    }
+
+    20% {
+        top: -50px;
+    }
+
+    40% {
+        top: -100px;
+    }
+
+    60% {
+        top: -150px;
+    }
+
+    80% {
+        top: -200px;
+    }
+}
+
+.firstimg {
+    width    : 500px;
+    height   : 710px;
+    overflow : hidden;
+    transform: rotate(90deg);
+}
+
+.firstimg>img {
+    width: 100%;
+}
+
+.secondimg {
+    width   : 500px;
+    height  : 710px;
+    overflow: hidden;
+}
+
+.secondimg>img {
+    width: 100%;
+}
+
+// navbar
+
+$text-secondary                  : #a7a7a7 !important;
+$normal-font                     : 12pt;
+$dark                            : #1A1A1A;
+$gray-800                        : #6e6e6e !important;
+$bs-link-color                   : #0d6efd !important;
+$rose                            : #DB6D91;
+$color-announcement-banner-accent: #8f8f8f;
+
+body {
+    background-color: $dark;
+}
+
+.text-bg-dark {
+    background   : #1B1B1B;
+    color        : $text-secondary;
+    font-size    : $normal-font;
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.nab-nav-link {
+    color          : $gray-800;
+    font-size      : $normal-font;
+    text-decoration: none;
+}
+
+.nab-nav-link:hover {
+    color: $bs-link-color;
+}
+
+.nav-nav-link-active {
+    color: $gray-800;
 }
 
 p {
-    font-size: 13px!important;
+    font-size: 1rem !important;
 }
 
-.grotesk{
-    font-family: 'Space Grotesk', sans-serif;
+.gray-800 {
+    background-color: $gray-800;
+}
+
+.rose {
+    font-size  : 1rem;
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}
+
+.bg-white {
+    --bs-bg-opacity : .8;
+    background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+}
+
+:root {
+    --primary  : #1976d2;
+    --body     : #fff;
+    --text-menu: #fff;
+    --text-body: #4b4b4b;
+}
+
+:root .dark-theme {
+    --primary  : #0d47a1;
+    --body     : #4b4b4b;
+    --text-menu: #fff;
+    --text-body: #fff;
+}
+
+body {
+    background-color: var(--body);
 }

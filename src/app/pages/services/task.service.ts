@@ -8,25 +8,30 @@ import { Task } from '../models/task.model';
 export class TaskService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private fireStorage: AngularFirestore
   ) { }
 
-  create(task: Task){
+  create(task: Task) {
     task.id = this.afs.createId()
     return this.afs.collection('/Task').add(task)
   }
 
-  getAll(){
+  getAll() {
     return this.afs.collection('/Task').snapshotChanges()
   }
 
-  update(task: Task){
+  getById(task: Task){
+    return this.afs.collection('/Task' + task.id).snapshotChanges()
+  }
+
+  update(task: Task) {
     this.delete(task)
     this.create(task)
   }
 
-  delete(task: Task){
-    return this.afs.doc('/Task/'+task.id).delete()
+  delete(task: Task) {
+    return this.afs.doc('/Task/' + task.id).delete()
   }
 
 }

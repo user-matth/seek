@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AppModule } from '../app.module';
 import { CoreModule } from '../core/core.module';
+import { PomodoroComponent } from './components/pomodoro/pomodoro.component';
 
 @NgModule({
   imports: [
@@ -14,7 +14,8 @@ import { CoreModule } from '../core/core.module';
     CoreModule,
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    PomodoroComponent
   ]
 })
 export class PagesModule { }

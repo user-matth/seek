@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="mb-5">
+      
+      <h1 class="grotesk" (click)="filterData()">All exams</h1>
+
+      <div class="d-flex flex-row align-items-center">
+        <p class="m-0 me-3">Sort by </p>
+        <select class="form-select w-auto" aria-label="Default select example">
+          <option>Subject</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-4" *ngFor="let exam of examList">
+          <div class="card mt-4" (click)="getById(exam)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div class="card-body">
+              <h5>{{exam.title}}</h5>
+              <p class="m-0 text-elipsis">{{exam.question}}</p>
+              <p class="m-0 fw-bold mt-2">Correct answer: <span class="fw-normal text-uppercase">{{exam.correct_answer}}</span> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-end mt-4">
+        <button type="button" (click)="navigate('/exam/form')" class="btn btn-dark rounded-0 ps-5 pe-5"> <i class="bi bi-plus"></i> Add</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="staticBackdropLabel">Exam details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="examForm">
+          <div class="row mb-3">
+            <div class="col-8">
+              <label for="form" class="form-label">Title</label>
+              <input type="email" class="form-control" id="form" formControlName="title">
+            </div>
+            <div class="col-4">
+              <label for="form" class="form-label">Subject</label>
+              <input type="email" class="form-control" id="form" formControlName="subject">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="form" class="form-label">Question</label>
+            <input type="email" class="form-control" id="form" formControlName="question">
+          </div>
+          <div class="mb-3">
+            <label for="form" class="form-label">Correct Answer</label>
+            <input type="email" class="form-control text-uppercase" id="form" formControlName="correct_answer">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-dark rounded-0 btn-sm" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark rounded-0 btn-sm">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

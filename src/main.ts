@@ -10,3 +10,7 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+function changeTheme(){
+  document.body.classList.toggle('dark-theme');
+}

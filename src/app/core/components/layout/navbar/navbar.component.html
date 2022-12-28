@@ -1,28 +1,34 @@
-<header class="gray-800 p-2">
-  <div class="container text-center">
-    <p class="m-0 text-white">
-      <span class="rose">Hello there! 👋</span>
-      Welcome to my new application. Don't be shy, let's dive into it!
-    </p>
-  </div>
-</header>
-<header class="p-2 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none">
-        Seek
-      </a>
+<div class="fixed-top">
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 ms-5 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link fs-6 px-2 ">Home</a></li>
-        <li><a href="#" class="nav-link fs-6 px-2 ">Features</a></li>
-        <li><a href="#" class="nav-link fs-6 px-2 ">About</a></li>
-      </ul>
+  <header class="gray-800 p-2">
+    <div class="container text-center">
+      <p class="m-0 text-white grotesk">
+        Hello there! 👋
+        Welcome to your student place. Don't be shy, dive into it!
+      </p>
+    </div>
+  </header>
 
-      <div class="text-end">
-        <!-- <a class="me-3">Login</a> -->
-        <button type="button" (click)="logOut()" class="btn btn-sm btn-light">Log out</button>
+  <header class="p-2 bg-white" style="opacity: .9;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a onclick="changeTheme()" class="d-flex nav-nav-link-active align-items-center mb-2 mb-lg-0 text-decoration-none fw-bold">
+          Seek
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 ms-5 justify-content-center mb-md-0">
+          <li><a (click)="navigate('/home')" class="nav-link nab-nav-link fs-6 px-2 ">Home</a></li>
+          <li><a (click)="navigate('/pomodoro')" class="nav-link nab-nav-link fs-6 px-2 ">Pomodoro</a></li>
+          <li><a (click)="navigate('/student-manager/list')" class="nav-link nab-nav-link fs-6 px-2 ">Tasks</a></li>
+          <li><a (click)="navigate('/exam/list')" class="nav-link nab-nav-link fs-6 px-2 ">Exam</a></li>
+        </ul>
+
+        <div class="text-end">
+          <!-- <a class="me-3">Login</a> -->
+          <button type="button" (click)="logOut()" class="btn btn-sm btn-outline-dark rounded-0">Log out</button>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+
+</div>
