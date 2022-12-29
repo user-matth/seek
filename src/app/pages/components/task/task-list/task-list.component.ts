@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-task-list',
@@ -14,8 +15,15 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TaskListComponent implements OnInit {
 
-  student_data: Task [] = []
-  test: any [] = []
+  taskList: Task[] = []
+
+  tasks: any
+  filteredTasks: any
+
+  filters: any = {}
+  property: string
+
+  test: any[] = []
   studentObj: Task = {
     id: '',
     title: '',
@@ -41,7 +49,8 @@ export class TaskListComponent implements OnInit {
     private auth: AuthService,
     private taskService: TaskService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private db: AngularFireDatabase
   ) { }
 
   ngOnInit() {
@@ -54,17 +63,52 @@ export class TaskListComponent implements OnInit {
       until_when: [''],
       created_at: [''],
     })
+
+    this.db.list('/Task').valueChanges().subscribe(
+      (tasks: any) => {
+        this.tasks = tasks
+        this.applyFilters()
+      }
+    )
+  }
+
+  private applyFilters() {
+    this.tasks = _.filter(this.tasks, _.conforms(this.filters))
+  }
+
+  filterExact(property: string, rule: any) {
+    this.filters[property] = (val: any) => val == rule
+    this.applyFilters()
+  }
+
+  filterGreaterThan(property: string, rule: any) {
+    this.filters[property] = (val: any) => val < rule
+    this.applyFilters()
+  }
+
+  filterBoolean(property: string, rule: any) {
+    if (!rule) this.removeFilter(property)
+    else {
+      this.filters[property] = (val: any) => val
+      this.applyFilters()
+    }
+  }
+
+  removeFilter(property: string) {
+    delete this.filters[property]
+    this.filters[property] = null
+    this.applyFilters()
   }
 
   getAll() {
     this.taskService.getAll().subscribe(
       res => {
-        this.student_data = res.map((e: any) => {
+        this.taskList = res.map((e: any) => {
           const data = e.payload.doc.data()
           data.id = e.payload.doc.id
           return data
         })
-        console.log(this.student_data)
+        console.log(this.taskList)
       }, errr => {
         alert('Something went wrong!')
       }
@@ -72,7 +116,7 @@ export class TaskListComponent implements OnInit {
   }
 
   create() {
-    if(this.title == '' || this.description == ''){
+    if (this.title == '' || this.description == '') {
       this.status = true
       return
     }
@@ -91,7 +135,7 @@ export class TaskListComponent implements OnInit {
   update() {
   }
 
-  getById(task: Task){
+  getById(task: Task) {
     this.taskForm.controls['id'].setValue(task.id)
     this.taskForm.controls['title'].setValue(task.title)
     this.taskForm.controls['description'].setValue(task.description)
@@ -105,8 +149,8 @@ export class TaskListComponent implements OnInit {
       this.taskService.delete(task)
     }
   }
-  
-  resetForm(){
+
+  resetForm() {
     this.id = ''
     this.title = ''
     this.description = ''
@@ -123,7 +167,7 @@ export class TaskListComponent implements OnInit {
     this.status = !this.status;
   }
 
-  navigate(url: string){
+  navigate(url: string) {
     this.router.navigateByUrl(url)
   }
 

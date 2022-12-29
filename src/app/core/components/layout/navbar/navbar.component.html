@@ -50,7 +50,7 @@
               </div>
               <div class="search-bar mb-2" (click)="activateMenu()">
                 <i class="bi bi-search m-2 ms-3 text-light"></i>
-                <input type="text" class="form-control w-100" placeholder="Search seek.com">
+                <input type="text" class="form-control w-100" placeholder="Search seek.com" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
               </div>
               <hr class="full-hr mb-3">
               <a (click)="navigate('/home')" class="nav-link text-white fs-6 px-2 p-2">Home</a>

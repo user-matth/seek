@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
@@ -10,6 +10,18 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class NavbarComponent implements OnInit {
 
   active: boolean = false
+  enteredSearchValue: string = ''
+
+  menuValues: any = [
+    {id: 1, title: 'Home', url: '/home'},
+    {id: 2, title: 'Pomodoro', url: '/pomodoro'},
+    {id: 3, title: 'Tasks', url: '/student-manager/list'},
+    {id: 4, title: 'Exams', url: '/exam/list'},
+    {id: 5, title: 'Messages', url: '/messages'}
+  ]
+
+  @Output()
+  searchTextChanged: EventEmitter<string> = new EventEmitter<string>()
 
   constructor(
     private auth: AuthService,
@@ -29,6 +41,10 @@ export class NavbarComponent implements OnInit {
 
   activateMenu(){
     this.active = !this.active
+  }
+
+  onSearchTextChanged(){
+    this.searchTextChanged.emit(this.enteredSearchValue)
   }
 
 }
