@@ -4,26 +4,35 @@ import { TaskService } from 'src/app/pages/services/task.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-student-control-form',
-  templateUrl: './student-control-form.component.html',
-  styleUrls: ['./student-control-form.component.scss']
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.scss']
 })
-export class StudentControlFormComponent implements OnInit {
+export class TaskListComponent implements OnInit {
 
-  student_data: Task[] = []
+  student_data: Task [] = []
+  test: any [] = []
   studentObj: Task = {
     id: '',
     title: '',
     description: '',
+    tag: '',
+    until_when: '',
     created_at: '',
   }
 
   id: string = ''
   title: string = ''
   description: string = ''
+  tag: string = ''
+  until_when: string = ''
   created_at: string = ''
+
+  taskForm: any
 
   status: boolean = false
   date: string = moment().format("YYYY-MM-DD");
@@ -31,12 +40,20 @@ export class StudentControlFormComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private taskService: TaskService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    console.log(this.student_data)
     this.getAll()
+    this.taskForm = this.fb.group({
+      id: [''],
+      title: [''],
+      description: [''],
+      tag: [''],
+      until_when: [''],
+      created_at: [''],
+    })
   }
 
   getAll() {
@@ -47,6 +64,7 @@ export class StudentControlFormComponent implements OnInit {
           data.id = e.payload.doc.id
           return data
         })
+        console.log(this.student_data)
       }, errr => {
         alert('Something went wrong!')
       }
@@ -56,24 +74,34 @@ export class StudentControlFormComponent implements OnInit {
   create() {
     if(this.title == '' || this.description == ''){
       this.status = true
-      setTimeout('', 5000);
       return
     }
     this.studentObj.id = ''
     this.studentObj.title = this.title
     this.studentObj.description = this.description
-    this.studentObj.created_at = this.date
+    this.studentObj.tag = this.tag
+    this.studentObj.until_when = this.until_when
+    this.studentObj.created_at = this.created_at
 
+    console.log(this.studentObj)
     this.taskService.create(this.studentObj)
     this.resetForm()
-    this.navigate('/student-manager/list')
   }
 
   update() {
   }
 
+  getById(task: Task){
+    this.taskForm.controls['id'].setValue(task.id)
+    this.taskForm.controls['title'].setValue(task.title)
+    this.taskForm.controls['description'].setValue(task.description)
+    this.taskForm.controls['tag'].setValue(task.tag)
+    this.taskForm.controls['until_when'].setValue(task.until_when)
+    this.taskForm.controls['created_at'].setValue(task.created_at)
+  }
+
   delete(task: Task) {
-    if (window.confirm(`Tem certeza que deseja apagar a tarefa ${task.id} ?`)) {
+    if (window.confirm(`Tem certeza que deseja apagar a tarefa "${task.title}" ?`)) {
       this.taskService.delete(task)
     }
   }
@@ -82,6 +110,9 @@ export class StudentControlFormComponent implements OnInit {
     this.id = ''
     this.title = ''
     this.description = ''
+    this.tag = ''
+    this.until_when = ''
+    this.created_at = ''
   }
 
   submit() {
@@ -92,7 +123,6 @@ export class StudentControlFormComponent implements OnInit {
     this.status = !this.status;
   }
 
-  
   navigate(url: string){
     this.router.navigateByUrl(url)
   }

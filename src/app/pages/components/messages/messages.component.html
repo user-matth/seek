@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="mb-5">
+      
+      <h1 class="grotesk" (click)="filterData()">All messages</h1>
+
+      <div class="d-flex flex-row align-items-center">
+        <p class="m-0 me-3">Sort by </p>
+        <select class="form-select w-auto" aria-label="Default select example">
+          <option>Subject</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-4" *ngFor="let message of messageList">
+          <div class="card mt-4" (click)="getById(message)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div class="card-body">
+              <h5>{{message.title}}</h5>
+              <p class="m-0 text-elipsis">{{message.description}}</p>
+              <span class="m-0 badge text-bg-dark rounded-0">{{message.created_at}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-end mt-4">
+        <button type="button" class="btn btn-dark rounded-0 ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#modalChoice"> <i class="bi bi-plus"></i> Add</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="staticBackdropLabel">Message details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="messageForm">
+          <div class="mb-3">
+            <label for="form" class="form-label">Title</label>
+            <input type="email" class="form-control" id="form" formControlName="title">
+          </div>
+          <div class="mb-3">
+            <label for="form" class="form-label">Description</label>
+            <input type="email" class="form-control" id="form" formControlName="description">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-dark rounded-0 btn-sm" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark rounded-0 btn-sm">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalChoice">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+          <input type="text" placeholder="Title here" class="form-control" [(ngModel)]="title" name="title">
+          <input type="text" placeholder="Description here" class="form-control mt-2" [(ngModel)]="description" name="description">
+        </div>
+        <div class="modal-footer flex-nowrap p-0">
+          <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal" (click)="create()"><strong>Continue</strong></button>
+          <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" (click)="resetForm()">Decline</button>
+        </div>
+    </div>
+  </div>
+</div>

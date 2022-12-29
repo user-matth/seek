@@ -21,6 +21,7 @@
           <li><a (click)="navigate('/pomodoro')" class="nav-link nab-nav-link fs-6 px-2 ">Pomodoro</a></li>
           <li><a (click)="navigate('/student-manager/list')" class="nav-link nab-nav-link fs-6 px-2 ">Tasks</a></li>
           <li><a (click)="navigate('/exam/list')" class="nav-link nab-nav-link fs-6 px-2 ">Exam</a></li>
+          <li><a (click)="navigate('/messages')" class="nav-link nab-nav-link fs-6 px-2 ">Messages</a></li>
         </ul>
 
         <div class="text-end">
@@ -41,17 +42,38 @@
         <div class="text-end burger-menu" (click)="activateMenu()">
           <i class="bi bi-list fs-3"></i>
           <div class="side-menu p-2" [ngClass]="active ? 'side-menu-active' : ''">
-            <a (click)="navigate('/home')" class="nav-link fs-6 px-2 p-2">Home</a>
-            <hr class="divider">
-            <a (click)="navigate('/pomodoro')" class="nav-link fs-6 px-2 p-2">Pomodoro</a>
-            <hr class="divider">
-            <a (click)="navigate('/student-manager/list')" class="nav-link fs-6 px-2 p-2">Tasks</a>
-            <hr class="divider">
-            <a (click)="navigate('/exam/list')" class="nav-link fs-6 px-2 p-2">Exam</a>
+            <div class="side-menu-content">
+              <div class="d-flex nav-nav-link-active align-items-center mb-0 mb-lg-0 justify-content-center mb-5 mt-0 text-decoration-none fw-bold w-100">
+                <a onclick="changeTheme()" class="d-flex nav-nav-link-active align-items-center mb-0 mb-lg-0 justify-content-center text-decoration-none fw-bold">
+                  Seek
+                </a>
+              </div>
+              <div class="search-bar mb-2" (click)="activateMenu()">
+                <i class="bi bi-search m-2 ms-3 text-light"></i>
+                <input type="text" class="form-control w-100" placeholder="Search seek.com">
+              </div>
+              <hr class="full-hr mb-3">
+              <a (click)="navigate('/home')" class="nav-link text-white fs-6 px-2 p-2">Home</a>
+              <hr class="divider">
+              <a (click)="navigate('/pomodoro')" class="nav-link text-white fs-6 px-2 p-2">Pomodoro</a>
+              <hr class="divider">
+              <a (click)="navigate('/student-manager/list')" class="nav-link text-white fs-6 px-2 p-2">Tasks</a>
+              <hr class="divider">
+              <a (click)="navigate('/exam/list')" class="nav-link text-white fs-6 px-2 p-2">Exams</a>
+              <hr class="divider">
+              <a (click)="navigate('/messages')" class="nav-link text-white fs-6 px-2 p-2">Messages</a>
+              <hr class="divider mb-5">
+              <button type="button" (click)="logOut()" class="btn btn-dark rounded-0 m-0 w-100 mt-5">Log out <i class="bi bi-box-arrow-right text-white float-end"></i></button>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </header>
+
+  <nav>
+    
+  </nav>
 
 </div>

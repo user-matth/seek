@@ -6,14 +6,13 @@ import * as moment from 'moment';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-student-control-list',
-  templateUrl: './student-control-list.component.html',
-  styleUrls: ['./student-control-list.component.scss']
+  selector: 'app-task-form',
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.scss']
 })
-export class StudentControlListComponent implements OnInit {
+export class TaskFormComponent implements OnInit {
 
-  student_data: Task [] = []
-  test: any [] = []
+  student_data: Task[] = []
   studentObj: Task = {
     id: '',
     title: '',
@@ -36,6 +35,7 @@ export class StudentControlListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.student_data)
     this.getAll()
   }
 
@@ -47,7 +47,6 @@ export class StudentControlListComponent implements OnInit {
           data.id = e.payload.doc.id
           return data
         })
-        console.log(this.student_data)
       }, errr => {
         alert('Something went wrong!')
       }
@@ -57,6 +56,7 @@ export class StudentControlListComponent implements OnInit {
   create() {
     if(this.title == '' || this.description == ''){
       this.status = true
+      setTimeout('', 5000);
       return
     }
     this.studentObj.id = ''
@@ -66,26 +66,14 @@ export class StudentControlListComponent implements OnInit {
 
     this.taskService.create(this.studentObj)
     this.resetForm()
+    this.navigate('/student-manager/list')
   }
 
   update() {
   }
 
-  getById(id: any){
-    this.taskService.getById(id).subscribe(
-      res => {
-        this.test = res.map((e:any) => {
-          const data = e.payload.doc.data()
-          data.id = e.payload.doc.id
-          return data
-        })
-        console.log(this.test)
-      }, err => { debugger }
-    )
-  }
-
   delete(task: Task) {
-    if (window.confirm(`Tem certeza que deseja apagar a tarefa "${task.title}" ?`)) {
+    if (window.confirm(`Tem certeza que deseja apagar a tarefa ${task.id} ?`)) {
       this.taskService.delete(task)
     }
   }
@@ -104,6 +92,7 @@ export class StudentControlListComponent implements OnInit {
     this.status = !this.status;
   }
 
+  
   navigate(url: string){
     this.router.navigateByUrl(url)
   }

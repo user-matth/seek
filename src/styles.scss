@@ -29,7 +29,7 @@ h2 {
 }
 
 .wrapper {
-    margin-top: 125px;
+    margin-top: 180px;
     min-height: 40vh;
 }
 
@@ -72,9 +72,11 @@ h2 {
     box-shadow        : none;
 }
 
-.home-hero>img {
-    width     : 100%;
-    margin-top: -120px;
+.home-hero > img {
+    margin-top: 0;
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .home-hero {
@@ -341,4 +343,11 @@ p {
 
 body {
     background-color: var(--body);
+}
+
+@media only screen and (max-width: 768px){
+    .wrapper {
+        margin-top: 190px!important;
+        min-height: 40vh;
+    }
 }

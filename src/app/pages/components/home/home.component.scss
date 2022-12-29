@@ -1,0 +1,19 @@
+@media only screen and (max-width: 528px){
+    .Iam .innerIam {
+        padding-left: 0.7rem;
+    }
+    .Iam b {
+        float: left;
+        overflow: hidden;
+        position: relative;
+        height: 50px;
+        top: 55px;
+    }
+    .Iam p {
+        float: left;
+        font-size: 30pt !important;
+        height: 51px;
+        padding: 37px 10px 0;
+        margin: 0;
+    }
+}
